@@ -1,8 +1,10 @@
+import Logo from '../assets/logo.j'
+
 export default function NavBar() {
     return (
         <div>
             <div>
-                <img src='' alt="logo here"/>
+                <img src={Logo} alt="logo here"/>
                 <p>Weather Vision</p>
             </div>
             <div>
