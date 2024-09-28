@@ -7,6 +7,7 @@ export default function HeroSection() {
     const [loading, setLoading] = useState(false)
     const [coordinates, setCoordinates] = useState([])
     const [weatherResponse, setWeatherResponse] = useState([])
+    const [clickedWeather, setClickedWeather] = useState(null)
 
     const apiKey = import.meta.env.VITE_API_KEY
 
@@ -47,6 +48,10 @@ export default function HeroSection() {
         }
         getWeatherInfo()
     }, [coordinates])
+
+    const handleCardClick = (weather) => {
+        setClickedWeather(weather)
+    }
 
     return (
         <div>
