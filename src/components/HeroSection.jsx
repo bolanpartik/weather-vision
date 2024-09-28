@@ -56,14 +56,20 @@ export default function HeroSection() {
                 getLatAndLon={getLatAndLon}
                 loading={loading}
             />
-            {weatherResponse?.map((weather, index) => {
-                return (
-                    <WeatherCard
-                        weatherResponse={weather}
-                        key={index}
-                    />
-                )
-            })}
+            {weatherResponse.length > 0 ?
+                weatherResponse?.map((weather, index) => {
+                    return (
+                        <WeatherCard
+                            weatherResponse={weather}
+                            key={index}
+                            handleCardClick={() => handleCardClick(weather)}
+                        />
+                    )
+                })
+                : <p className="w-full text-center p-4 rounded-lg bg-gray-900 text-gray-300 shadow-md">
+                    Nothing to show
+                </p>
+            }
         </div>
     )
 }
