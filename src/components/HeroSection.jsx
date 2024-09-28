@@ -5,6 +5,7 @@ export default function HeroSection() {
     const [searchCity, setSearchCity] = useState('')
     const [loading, setLoading] = useState(false)
     const [coordinates, setCoordinates] = useState([])
+    const [weatherResponse, setWeatherResponse] = useState([])
 
     const apiKey = import.meta.env.VITE_API_KEY
 
@@ -22,6 +23,29 @@ export default function HeroSection() {
             setLoading(false)
         }
     }
+
+    useEffect(() => {
+        if (coordinates.length === 0) {
+            return;
+        }
+        const getWeatherInfo = async () => {
+            try {
+                const allPromise = coordinates.map(async (coordinate) => {
+                    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinate.lat}&lon=${coordinate.lon}&appid=${apiKey}&units=metric`)
+                    return await res.json()
+                })
+                const weatherRes = await Promise.all(allPromise)
+                setWeatherResponse(weatherRes)
+                console.log(weatherRes)
+            } catch (e) {
+                console.log(e)
+                setLoading(false)
+            } finally {
+                setLoading(false)
+            }
+        }
+        getWeatherInfo()
+    }, [coordinates])
 
     return (
         <div>
