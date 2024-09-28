@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import GetInfo from "./GetInfo";
 import WeatherCard from "./WeatherCard";
+import DetailsCard from "./DetailsCard";
 
 export default function HeroSection() {
     const [searchCity, setSearchCity] = useState('')
@@ -61,7 +62,9 @@ export default function HeroSection() {
                 getLatAndLon={getLatAndLon}
                 loading={loading}
             />
-            {weatherResponse.length > 0 ?
+            {clickedWeather ? (
+                <DetailsCard weather={clickedWeather}/>
+            ) : weatherResponse.length > 0 ?
                 weatherResponse?.map((weather, index) => {
                     return (
                         <WeatherCard
