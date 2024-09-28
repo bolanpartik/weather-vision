@@ -1,6 +1,6 @@
 import { Thermometer, Eye, Sunrise, Sunset, Wind, Gauge } from "lucide-react";
 
-export default function WeatherCard({ weatherResponse }) {
+export default function WeatherCard({ weatherResponse, handleCardClick }) {
 
   const formatTime = (timestamp) => {
     return new Date(timestamp * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -8,7 +8,8 @@ export default function WeatherCard({ weatherResponse }) {
 
   return (
     <div
-      className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 text-white shadow-lg rounded-lg p-3 max-w-md  hover:shadow-2xl transition-all mb-4 border-2 border-transparent hover:border-gray-500">
+      className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 text-white shadow-lg rounded-lg p-3 max-w-md  hover:shadow-2xl transition-all mb-4 border-2 border-transparent hover:border-gray-500"
+      onClick={handleCardClick}>
 
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl font-bold text-gray-500">{weatherResponse?.name}</h2>
