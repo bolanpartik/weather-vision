@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GetInfo from "./GetInfo";
+import WeatherCard from "./WeatherCard";
 
 export default function HeroSection() {
     const [searchCity, setSearchCity] = useState('')
@@ -12,6 +13,7 @@ export default function HeroSection() {
     const getLatAndLon = async () => {
         try {
             setLoading(true)
+            setWeatherResponse([])
             const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchCity}&limit=5&appid=${apiKey}`)
             const parsedRes = await response.json()
             const newCoordinates = parsedRes.map(location => ({ lat: location.lat, lon: location.lon }))
@@ -36,7 +38,6 @@ export default function HeroSection() {
                 })
                 const weatherRes = await Promise.all(allPromise)
                 setWeatherResponse(weatherRes)
-                console.log(weatherRes)
             } catch (e) {
                 console.log(e)
                 setLoading(false)
@@ -55,6 +56,14 @@ export default function HeroSection() {
                 getLatAndLon={getLatAndLon}
                 loading={loading}
             />
+            {weatherResponse?.map((weather, index) => {
+                return (
+                    <WeatherCard
+                        weatherResponse={weather}
+                        key={index}
+                    />
+                )
+            })}
         </div>
     )
 }
