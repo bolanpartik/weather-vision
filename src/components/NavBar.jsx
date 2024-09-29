@@ -2,7 +2,7 @@ import Logo from '../assets/logo.jpeg'
 
 export default function NavBar() {
     return (
-        <div className='flex justify-between w-2/3 border border-zinc-400/50 rounded-full items-center p-2 shadow-lg shadow-emerald-100/20 text-fuchsia-600 backdrop-blur-sm'>
+        <div className='flex justify-between w-2/3 border border-zinc-400/50 rounded-full items-center p-2 shadow-lg shadow-emerald-100/20 text-fuchsia-600 backdrop-blur-md'>
 
             <div className='flex items-center'>
                 <img
