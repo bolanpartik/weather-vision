@@ -57,13 +57,14 @@ export default function HeroSection() {
     }
 
     return (
-        <div>
+        <div className="flex flex-col justify-center items-center">
             <GetInfo
                 searchCity={searchCity}
                 setSearchCity={setSearchCity}
                 getLatAndLon={getLatAndLon}
                 loading={loading}
             />
+            <div className="w-2/3 flex flex-wrap gap-5 justify-center mt-4">
             {clickedWeather ? (
                 <DetailsCard weather={clickedWeather}/>
             ) : weatherResponse.length > 0 ?
@@ -80,6 +81,7 @@ export default function HeroSection() {
                     Nothing to show
                 </p>
             }
+            </div>
         </div>
     )
 }
