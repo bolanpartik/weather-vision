@@ -16,6 +16,8 @@ export default function HeroSection() {
         try {
             setLoading(true)
             setWeatherResponse([])
+            setCoordinates([])
+            setClickedWeather(null)
             const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchCity}&limit=5&appid=${apiKey}`)
             const parsedRes = await response.json()
             const newCoordinates = parsedRes.map(location => ({ lat: location.lat, lon: location.lon }))
