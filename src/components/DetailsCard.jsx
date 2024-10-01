@@ -9,8 +9,8 @@ export default function DetailsCard({ weather }) {
     <div className="font-sans w-full mx-auto p-6">
       <h1 className="text-3xl font-bold text-center mb-8">Weather in {weather.name}, {weather.sys.country}</h1>
 
-      <div className="grid grid-cols-1 gap-6">
-        <div className="bg-customDark shadow rounded-lg p-6 relative overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="bg-customDark shadow rounded-lg p-6 relative overflow-hidden hover:shadow-slate-600 transition-shadow">
           <h2 className="text-xl font-semibold mb-4 flex items-center">
             <Thermometer className="mr-2" /> Temperature
           </h2>
@@ -23,7 +23,7 @@ export default function DetailsCard({ weather }) {
           <Thermometer className="absolute right-4 top-1/2 transform -translate-y-1/2 text-red-500 " size={80} />
         </div>
 
-        <div className="bg-customDark shadow rounded-lg p-6 relative overflow-hidden">
+        <div className="bg-customDark shadow rounded-lg p-6 relative overflow-hidden hover:shadow-slate-600 transition-shadow">
           <h2 className="text-xl font-semibold mb-4 flex items-center">
             <Cloud className="mr-2" /> Weather Conditions
           </h2>
@@ -35,7 +35,7 @@ export default function DetailsCard({ weather }) {
           <Cloud className="absolute right-4 top-1/2 transform -translate-y-1/2 text-blue-500" size={80} />
         </div>
 
-        <div className="bg-customDark shadow rounded-lg p-6 relative overflow-hidden">
+        <div className="bg-customDark shadow rounded-lg p-6 relative overflow-hidden hover:shadow-slate-600 transition-shadow">
           <h2 className="text-xl font-semibold mb-4 flex items-center">
             <Wind className="mr-2" /> Wind & Pressure
           </h2>
@@ -48,7 +48,7 @@ export default function DetailsCard({ weather }) {
           <Wind className="absolute right-4 top-1/2 transform -translate-y-1/2 text-green-500 " size={80} />
         </div>
 
-        <div className="bg-customDark shadow rounded-lg p-6 relative overflow-hidden">
+        <div className="bg-customDark shadow rounded-lg p-6 relative overflow-hidden hover:shadow-slate-600 transition-shadow">
           <h2 className="text-xl font-semibold mb-4 flex items-center">
             <Droplet className="mr-2" /> Humidity & Visibility
           </h2>
@@ -60,7 +60,7 @@ export default function DetailsCard({ weather }) {
         </div>
       </div>
 
-      <div className="mt-8 bg-customDark shadow rounded-lg p-6 relative overflow-hidden">
+      <div className="mt-8 bg-customDark shadow rounded-lg p-6 relative overflow-hidden hover:shadow-slate-600 transition-shadow">
         <h2 className="text-xl font-semibold mb-4 flex items-center">
           <MapPin className="mr-2" /> Additional Information
         </h2>
@@ -82,7 +82,7 @@ export default function DetailsCard({ weather }) {
             Sunset: <span className="font-medium ml-1">{formatTime(weather.sys.sunset)}</span>
           </p>
         </div>
-        <Eye className="absolute right-4 top-1/2 transform -translate-y-1/2 text-yellow-500" size={80} />
+        <Eye className="absolute right-4 top-1/2 transform -translate-y-1/8 md:-translate-y-1/2 text-yellow-500" size={80} />
       </div>
 
     </div>
