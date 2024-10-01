@@ -7,7 +7,7 @@ function App() {
   return (
 
     <div className="min-h-dvh w-full bg-darkGradient">
-      <div className="flex w-full justify-center sticky top-0 z-10">
+      <div className="flex w-full justify-center sticky top-0 z-10 border-b border-b-slate-800 backdrop-blur-md">
         <NavBar />
       </div>
       <HeroSection />
