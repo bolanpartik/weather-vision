@@ -9,12 +9,14 @@ export default function HeroSection() {
     const [coordinates, setCoordinates] = useState([])
     const [weatherResponse, setWeatherResponse] = useState([])
     const [clickedWeather, setClickedWeather] = useState(null)
+    const [weatherLoading, setWeatherLoading] = useState(false)
 
     const apiKey = import.meta.env.VITE_API_KEY
 
     const getLatAndLon = async () => {
         try {
             setLoading(true)
+            setWeatherLoading(true)
             setWeatherResponse([])
             setCoordinates([])
             setClickedWeather(null)
@@ -45,8 +47,10 @@ export default function HeroSection() {
             } catch (e) {
                 console.log(e)
                 setLoading(false)
+                setWeatherLoading(false)
             } finally {
                 setLoading(false)
+                setWeatherLoading(false)
             }
         }
         getWeatherInfo()
@@ -64,7 +68,7 @@ export default function HeroSection() {
                 getLatAndLon={getLatAndLon}
                 loading={loading}
             />
-            <div className="w-2/3 flex flex-wrap gap-5 justify-center mt-4">
+            <div className="w-full md:w-2/3 flex flex-wrap gap-5 justify-center mt-4">
             {clickedWeather ? (
                 <DetailsCard weather={clickedWeather}/>
             ) : weatherResponse.length > 0 ?
@@ -77,8 +81,8 @@ export default function HeroSection() {
                         />
                     )
                 })
-                : <p className="w-full text-center p-4 rounded-lg bg-gray-900 text-gray-300 shadow-md">
-                    Nothing to show
+                : <p className="w-full md:w-1/2 text-center p-4 rounded-lg bg-gray-900 text-gray-300 shadow-md">
+                    {weatherLoading ? 'Loading...' : 'Nothing to show'}
                 </p>
             }
             </div>
